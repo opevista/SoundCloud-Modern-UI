@@ -7,6 +7,8 @@
         subLang: 'en'
     };
 
+    const NO_LYRICS_SENTINEL = '__NO_LYRICS__';
+
     let currentKey = null;
     let lyricsData = [];
     let hasTimestamp = false;
