@@ -13,21 +13,13 @@
 
 /* === 既存レイアウト === */
 #ytm-custom-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  background-position: 50% 50%;
-  z-index: 1000;
-  background-color: #050505;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background-size: cover; background-position: center center;
+  z-index: 1000; background-color: #050505;
   filter: blur(80px) brightness(0.5) saturate(140%);
-  /* 背景が大きく動いても端が出ないように少し拡大 */
-  transform: scale(1.15);
-  pointer-events: none;
-  display: none;
+  transform: scale(1.1); pointer-events: none; display: none;
 }
+body.ytm-custom-layout #ytm-custom-bg { display: block !important; }
 
 #ytm-custom-wrapper {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -69,14 +61,7 @@ body.ytm-custom-layout ytmusic-search-box {
     border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); border-radius: 8px;
 }
 
-#ytm-custom-left-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
-    text-align: center;
-    transition: transform 0.5s ease;
-}
+#ytm-custom-left-col { display: flex; flex-direction: column; align-items: center; width: 400px; text-align: center; transition: transform 0.5s ease; }
 #ytm-artwork-container { 
     width: 100%; aspect-ratio: 1; border-radius: 16px; 
     box-shadow: 0 20px 60px rgba(0,0,0,0.6); overflow: hidden; margin-bottom: 30px; 
@@ -153,13 +138,7 @@ body.ytm-custom-layout ytmusic-search-box {
 }
 
 /* 歌詞エリア */
-#my-lyrics-container {
-    width: 500px;
-    height: 65vh;
-    overflow-y: auto;
-    scrollbar-width: none;
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-}
+#my-lyrics-container { width: 500px; height: 65vh; overflow-y: auto; scrollbar-width: none; mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
 #my-lyrics-container::-webkit-scrollbar { display: none; }
 
 .lyric-line {
@@ -192,7 +171,7 @@ body.ytm-custom-layout ytmusic-search-box {
   font-weight: 600;
 }
 
-/* 翻訳アニメーション */
+/* Apple Music っぽい「翻訳がふわっと現れる」アニメーション */
 body.ytm-custom-layout.ytm-has-timestamp .lyric-line .lyric-translation {
     opacity: 0;
     max-height: 0;
@@ -209,7 +188,7 @@ body.ytm-custom-layout.ytm-has-timestamp .lyric-line.show-translation .lyric-tra
     margin-top: 6px;
 }
 
-/* 1文字ずつ光る演出 */
+/* ★ Apple Music 風：1文字ずつ光る演出 */
 body.ytm-custom-layout .lyric-line .lyric-char {
     display: inline-block;
     transition:
@@ -230,83 +209,45 @@ body.ytm-custom-layout .lyric-line.active .lyric-char.char-active {
 /* プレーヤーバーのスタイル */
 body.ytm-custom-layout ytmusic-player-bar {
   position: fixed !important; 
-  bottom: 40px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 95% !important;
-  max-width: 900px !important; 
-  height: 80px !important;
-  border-radius: 40px !important;
-  background: rgba(20,20,20,0.6) !important;
-  backdrop-filter: blur(60px) saturate(180%) !important;
+  bottom: 40px !important; left: 50% !important; transform: translateX(-50%) !important;
+  width: 95% !important; max-width: 900px !important; 
+  height: 80px !important; border-radius: 40px !important;
+  background: rgba(20,20,20,0.6) !important; backdrop-filter: blur(60px) saturate(180%) !important;
   border: 1px solid rgba(255,255,255,0.15) !important; 
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  justify-content: space-between !important;
-  align-items: center !important;
+  display: flex !important; flex-wrap: nowrap !important;
+  justify-content: space-between !important; align-items: center !important;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
   padding: 0 20px !important;
-  z-index: 2000 !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  z-index: 2000 !important; visibility: visible !important; opacity: 1 !important;
   overflow: hidden !important;
 }
-
-body.ytm-custom-layout .left-controls {
-    flex: 0 0 auto !important;
-    justify-content: flex-start !important;
-}
-
-body.ytm-custom-layout .right-controls {
-    flex: 0 0 auto !important;
-    justify-content: flex-end !important;
-    gap: 10px !important;  /* ボタンと音量バーの間隔を小さく */
-    align-items: center !important;
-}
-
-/* 右側の音量スライダー */
-body.ytm-custom-layout .right-controls tp-yt-paper-slider {
-    max-width: 150px !important;
-}
-
-/* 再生位置バーレイアウト */
+body.ytm-custom-layout .left-controls { flex: 0 0 auto !important; justify-content: flex-start !important; }
+body.ytm-custom-layout .right-controls { flex: 0 0 auto !important; justify-content: flex-end !important; }
 body.ytm-custom-layout .middle-controls { 
     flex: 1 1 auto !important; 
-    justify-content: center !っと; 
+    justify-content: center !important; 
     margin: 0 15px !important;
     max-width: 600px !important;
     padding: 0 5px !important;
 }
-body.ytm-custom-layout .middle-controls tp-yt-paper-slider {
+body.ytm-custom-layout tp-yt-paper-slider { 
     width: calc(100% - 20px) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex: 1 !important;
-    height: 40px !important;
-    display: flex !important;
-    align-items: center !important;
+    margin: 0 !important; padding: 0 !important; flex: 1 !important;
+    height: 40px !important; display: flex !important; align-items: center !important;
 }
-
 body.ytm-custom-layout ytmusic-player-bar tp-yt-iron-icon,
 body.ytm-custom-layout ytmusic-player-bar .time-info,
-body.ytm-custom-layout ytmusic-player-bar button {
-    color: #ffffff !important;
-    fill: #ffffff !important;
-    opacity: 1 !important;
+body.ytm-custom-layout ytmusic-player-bar button:not(#my-mode-toggle) {
+    color: #ffffff !important; fill: #ffffff !important; opacity: 1 !important;
 }
 body.ytm-custom-layout ytmusic-player-bar .background, 
 body.ytm-custom-layout ytmusic-player-bar #container,
 body.ytm-custom-layout ytmusic-player-bar .thumbnail-image-wrapper,
-body.ytm-custom-layout ytmusic-player-bar .content-info-wrapper {
-    display: none !important;
-}
+body.ytm-custom-layout ytmusic-player-bar .content-info-wrapper { display: none !important; }
 
-/* IMMERSION トグル非表示（※音量操作とかぶります） */
-#my-mode-toggle {
-    display: none !important;
-}
+#my-mode-toggle { border: none; border-radius: 16px; padding: 8px 16px; font-weight: 700; cursor: pointer; margin-left: 10px; font-size: 12px; transition: 0.2s; }
 
-/* === アップロードメニュー === */
+/* === アップロードメニュー（グラス UI） === */
 .ytm-upload-menu {
     position: absolute;
     bottom: 52px;
@@ -432,22 +373,4 @@ body.ytm-custom-layout ytmusic-player-bar .content-info-wrapper {
 }
 .ytm-confirm-btn.danger:hover {
     background: rgba(255, 61, 80, 1);
-}
-
-/* === 背景をゆっくり動かす === */
-@keyframes ytmBgDrift {
-  0% {
-    transform: scale(1.15) translate3d(-3%, -3%, 0);
-  }
-  50% {
-    transform: scale(1.15) translate3d(4%, 2%, 0);
-  }
-  100% {
-    transform: scale(1.15) translate3d(-2%, 4%, 0);
-  }
-}
-
-body.ytm-custom-layout #ytm-custom-bg {
-  display: block !important;
-  animation: ytmBgDrift 40s ease-in-out infinite alternate;
 }
