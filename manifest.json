@@ -1,24 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Music Modern UI",
+  "name": "SoundCloud Modern UI",
   "version": "0.9.1",
-  "description": "YouTube Musicをもっと美しく",
+  "description": "SoundCloudをもっと美しく",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
-    "https://music.youtube.com/*",
-    "https://lrclib.net/*",
-    "https://lrchub.coreone.work/*",
-    "https://api-free.deepl.com/*",
-    "https://api.deepl.com/*"
+    "https://soundcloud.com/*"
   ],
   "background": {
     "service_worker": "src/js/background.js"
   },
   "content_scripts": [
     {
-      "matches": ["https://music.youtube.com/*"],
+      "matches": ["https://soundcloud.com/*"],
       "js": ["src/js/content.js"],
       "css": ["src/css/style.css"],
       "run_at": "document_idle"
